@@ -56,4 +56,41 @@ main|>select(`STAR RADIUS`,`Effective Temperature`)|>
   geom_point()+
   labs(title="Temporature in function of radius",x="radius",y="temperature")
 ```
-# Question
+# Question 6 
+```{r}
+#Distance
+ main |>
+  select(star_name, `Distance (Lightyears)`) |>
+  arrange(`Distance (Lightyears)`) |>
+  filter(`Distance (Lightyears)` == min(`Distance (Lightyears)`) | 
+         `Distance (Lightyears)` == max(`Distance (Lightyears)`))
+# Temperature
+ main |>
+  select(star_name, `Effective Temperature`) |>
+   filter(`Effective Temperature`!=is.na(`Effective Temperature`))|>
+  arrange(`Effective Temperature`) |>
+  filter(`Effective Temperature` == min(`Effective Temperature`) | 
+         `Effective Temperature` == max(`Effective Temperature`))
+ # Relative Mass
+ main |>
+  select(star_name, `Relative Mass`) |>
+  filter(`Relative Mass`!=is.na(`Relative Mass`))|>
+  arrange(`Relative Mass`) |>
+  filter(`Relative Mass` == min(`Relative Mass`) | 
+         `Relative Mass` == max(`Relative Mass`))
+ # Star Radius
+ main |>
+  select(star_name, `STAR RADIUS`) |>
+  arrange(`STAR RADIUS`) |>
+  filter(`STAR RADIUS` == min(`STAR RADIUS`) | 
+        `STAR RADIUS` == max(`STAR RADIUS`))
+ # Luminosity
+  main |>
+  select(star_name, `Star Luminosity`) |>
+      filter(`Star Luminosity`!=is.na(`Star Luminosity`))|>
+  arrange(`Star Luminosity`) |>
+  filter(`Star Luminosity` == min(`Star Luminosity`) | 
+        `Star Luminosity` == max(`Star Luminosity`))
+```
+
+
