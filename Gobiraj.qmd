@@ -104,8 +104,13 @@ Bt_faction_sys<-vroom(here("data","BT_faction_system.csv"),na="missing")
 Bt_faction_sys|> filter(fkey=="A"|fkey=="U"|fkey=="I")|>
   group_by(fkey)|>
   summarise("number of systems" = n())
-  
-  
+    
+
 ```
 
+# Question 10
+```{r}
+faction<-left_join(main,Bt_faction_sys,by="Star_code")
+knitr::kable(faction|>summarise("number of missing stars"=sum(is.na(fkey))))
+```
 
