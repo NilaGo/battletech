@@ -4,3 +4,26 @@ author: "Nila Gobiraj"
 format: html
 ---
 
+# Initialisation
+```{r}
+#Packages Installation
+#| message: FALSE
+library(here)
+library(vroom) 
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+# Data loading
+here::i_am("battletech.Rproj")
+
+```
+# Question - 1 
+### Link to GitHub Repository
+https://github.com/NilaGo/battletech.git
+# Question - 2 - Data Loading
+```{r}
+# Main data set
+main<-vroom(here("data","data_systems.csv"),col_types = c("n","c","n","n","n","n","n","c"))
+main|>select(where(is.numeric))
+```
+
