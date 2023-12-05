@@ -48,6 +48,7 @@ main |>
   knitr::kable()
 ```
 
+# Question 5 
 ```{r}
 main|>select(`STAR RADIUS`,`Effective Temperature`)|>
   filter(`Effective Temperature`!=is.na(`Effective Temperature`),`STAR RADIUS`!=is.na(`STAR RADIUS`))|>
