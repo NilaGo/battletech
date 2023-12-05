@@ -5,6 +5,7 @@ format: html
 ---
 
 # Initialisation
+
 ```{r}
 #Packages Installation
 #| message: FALSE
@@ -17,13 +18,24 @@ library(ggplot2)
 here::i_am("battletech.Rproj")
 
 ```
-# Question - 1 
+
+# Question - 2
+
 ### Link to GitHub Repository
-https://github.com/NilaGo/battletech.git
-# Question - 2 - Data Loading
+
+https://github.com/NilaGo/battletech.git \# Question - 3 - Data Loading
+
 ```{r}
 # Main data set
 main<-vroom(here("data","data_systems.csv"),col_types = c("n","c","n","n","n","n","n","c"))
+#Verifications
+main|>summarise("Data loading is successful"= (n()==1030))
+main|>select(where(is.numeric))
+```
+
+
+```{r}
+main|>summarise("Data loading is successful"= (n()==1030))
 main|>select(where(is.numeric))
 ```
 
