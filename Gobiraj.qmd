@@ -92,5 +92,20 @@ main|>select(`STAR RADIUS`,`Effective Temperature`)|>
   filter(`Star Luminosity` == min(`Star Luminosity`) | 
         `Star Luminosity` == max(`Star Luminosity`))
 ```
+# Question 8
+
+```{r}
+Bt_faction<-vroom(here("data","BTFACTIONS.csv"),na="missing")
+Bt_faction_sys<-vroom(here("data","BT_faction_system.csv"),na="missing")
+
+```
+# Question 9
+```{r}
+Bt_faction_sys|> filter(fkey=="A"|fkey=="U"|fkey=="I")|>
+  group_by(fkey)|>
+  summarise("number of systems" = n())
+  
+  
+```
 
 
