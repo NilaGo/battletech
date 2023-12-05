@@ -23,7 +23,8 @@ here::i_am("battletech.Rproj")
 
 ### Link to GitHub Repository
 
-https://github.com/NilaGo/battletech.git \# Question - 3 - Data Loading
+https://github.com/NilaGo/battletech.git \
+# Question - 3 - Data Loading
 
 ```{r}
 # Main data set
@@ -33,9 +34,25 @@ main|>summarise("Data loading is successful"= (n()==1030))
 main|>select(where(is.numeric))
 ```
 
-
+# Question 4
 ```{r}
-main|>summarise("Data loading is successful"= (n()==1030))
-main|>select(where(is.numeric))
+knitr::kable(main |> summarise("number of obs" = nrow(main),"number of variables"=ncol(main)))
+
+main |>
+  mutate("missing variables " = across(everything(), ~ sum(is.na(.))))|>slice_head()|>
+  knitr::kable()
+
+
+main |>
+  mutate("missing variables " = across(everything(), ~ sum(is.na(.))>1))|>slice_head()|>
+  knitr::kable()
 ```
 
+```{r}
+main|>select(`STAR RADIUS`,`Effective Temperature`)|>
+  filter(`Effective Temperature`!=is.na(`Effective Temperature`),`STAR RADIUS`!=is.na(`STAR RADIUS`))|>
+  ggplot(aes(x=`STAR RADIUS`,y=`Effective Temperature`))+
+  geom_point()+
+  labs(title="Temporature in function of radius",x="radius",y="temperature")
+```
+# Question
